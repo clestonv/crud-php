@@ -1,0 +1,19 @@
+.mostra_foto {
+    width: 250px !important;
+    margin: 20px auto;
+}
+
+#foto_edit {
+    width: 80px !important;
+    height: 80px !important;
+    border-radius: 50% !important;
+    object-fit: cover !important;
+    margin: 8px 37%;
+}
+
+.lista_foto {
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% !important;
+    object-fit: cover !important;
+}
