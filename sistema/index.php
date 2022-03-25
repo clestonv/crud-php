@@ -49,8 +49,10 @@
                     </div>
 
                 </form>
+                
+                <!-- SCRIPT PHP -->
                 <?php 
-                  if(isset($_POST['login'])) {
+                    if(isset($_POST['login'])) {
                     $login = $_POST['login'];
                     $senha = md5($_POST['senha']);
 
@@ -59,11 +61,12 @@
 
                         if ($result = mysqli_query($conn, $sql)) {
                             $num_registros = mysqli_num_rows($result);
-                                if ($num_registros == 1) {
+                                if ($num_registros == 2) {
                                 $linha = mysqli_fetch_assoc($result);
+
                                     if (($login == $linha['login']) and ($senha == $linha['senha'])) {
                                         session_start();
-                                        $_SESSION['login'] = "Robson";   
+                                        $_SESSION['login'] = $login;   
                                         header("location: view");
                                     } else {
                                         echo "<div class='mt-2 gap-3 alert alert-danger' role='alert'>
@@ -71,6 +74,10 @@
                                     </div>";
                                     }
                                 } else {
+                                    echo "<pre>
+                                    " . var_dump($num_registros);
+                                    "</pre>";
+                                    
                                         echo "<div class='mt-2 gap-3 alert alert-danger' role='alert'>
                                         Login e Senha Incorretos !!</div>";
                                 }                 
@@ -78,7 +85,7 @@
                             echo "<div class='mt-2 gap-3 alert alert-danger' role='alert'>
                             Nenhum Resultado do Banco !!</div>";
                         }    
-                  }
+                    }
                 ?>
             </div>
         </div>
